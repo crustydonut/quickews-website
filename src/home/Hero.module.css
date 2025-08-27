@@ -1,0 +1,75 @@
+.wrapper {
+  display: block;
+  box-sizing: border-box;
+  background-color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-dark-8)
+  );
+}
+
+.inner {
+  padding-top: 60px;
+  padding-bottom: 120px;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-bottom: 90px;
+  }
+}
+
+.title {
+  font-size: 62px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  text-align: center;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: 42px;
+    line-height: 1.2;
+  }
+}
+
+.video {
+  border: 2px solid;
+  border-radius: var(--mantine-radius-md);
+  margin: var(--mantine-spacing-xl) 0;
+  box-shadow: var(--mantine-shadow-lg);
+  overflow: hidden;
+
+  & > video {
+    display: block;
+    width: 100%;
+  }
+}
+
+.description {
+  margin-top: var(--mantine-spacing-xl);
+  font-size: 24px;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: 18px;
+  }
+}
+
+.controls {
+  margin-top: calc(var(--mantine-spacing-xl) * 2);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-top: var(--mantine-spacing-xl);
+  }
+}
+
+.control {
+  height: 54px;
+  padding-left: 38px;
+  padding-right: 38px;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    height: 54px;
+    padding-left: 18px;
+    padding-right: 18px;
+    flex: 1;
+  }
+}

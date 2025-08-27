@@ -1,0 +1,106 @@
+.footer {
+  border-top: 1px solid
+    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+
+    @media (max-width: $mantine-breakpoint-xs) {
+      padding-right: var(--mantine-spacing-xl);
+      padding-left: var(--mantine-spacing-xl);
+    }
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--mantine-spacing-xl);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+  flex-direction: column;
+  /* 
+  @media (max-width: $mantine-breakpoint-sm) {
+  } */
+}
+
+.about {
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex: 4;
+
+  & p {
+    max-width: 220px;
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    flex: 0 1 auto;
+    width: 100%;
+    align-items: center;
+    margin-bottom: var(--mantine-spacing-xs);
+    & p {
+      text-align: center;
+    }
+  }
+}
+
+.link {
+  display: block;
+  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-2));
+  font-size: var(--mantine-font-size-sm);
+  padding: calc(var(--mantine-spacing-sm) / 2) 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: var(--mantine-font-size-lg);
+  /* width: 160px; */
+  font-weight: 500;
+  margin-bottom: calc(var(--mantine-spacing-xs) / 2);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    width: auto;
+  }
+}
+
+.links {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: var(--mantine-line-height-md);
+  flex: 2;
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* .social a {
+  border: solid
+    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  border-radius: var(--mantine-radius-md);
+} */
+
+.sitemap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 360px;
+}
+
+.nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    justify-content: space-around;
+  }
+}
