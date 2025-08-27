@@ -8,12 +8,17 @@ import {
   Switch,
   Textarea,
   Title,
+  useComputedColorScheme,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
+import { useState } from "react";
+import Turnstile from "react-turnstile";
 
 export default function RatingForm() {
+  const colorScheme = useComputedColorScheme();
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [useNickname, { toggle }] = useDisclosure(true);
   const form = useForm({
     mode: "uncontrolled",
@@ -21,6 +26,7 @@ export default function RatingForm() {
       nickname: "",
       stars: 0,
       description: "",
+      token: "",
     },
 
     validate: {
@@ -33,12 +39,33 @@ export default function RatingForm() {
         value.length <= 400
           ? null
           : "Comment length must not exceed 400 characters",
+      token: (value) =>
+        value === ""
+          ? "Please complete the Cloudflare Turnstile or reload the page. Your entries may be lost if you reload, so consider copying them first."
+          : null,
     },
   });
 
-  async function sendRequest(values) {
-    // const headers = new Headers().append("Content-Type", "application/json");
+  const onSuccess = (token) => {
+    form.setFieldValue("token", token);
+    setButtonDisabled(false);
+  };
 
+  const onError = () => {
+    setButtonDisabled(true);
+    notifications.show({
+      title: "Turnstile Error",
+      message: "Failed to verify. Please try again.",
+      color: "red",
+    });
+  };
+
+  const onExpire = () => {
+    form.setFieldValue("token", "");
+    setButtonDisabled(true);
+  };
+
+  async function sendRequest(values) {
     const response = await fetch(
       "https://quickews.canny0.workers.dev/api/v1/ratings",
       {
@@ -72,16 +99,16 @@ export default function RatingForm() {
 
   return (
     <Container mt="3rem" mb="3rem" size="md">
-      <Title ta="center" mb="xl" size="3rem" fw={500} order={1}>
+      <Title ta="center" mb="xl" size="3rem" fw={400} order={1}>
         How do you like our extension?
         <br />
         Let us know!
       </Title>
       <form
         style={{ maxWidth: "400px", margin: "0 auto" }}
-        onSubmit={form.onSubmit((values) => {
+        onSubmit={form.onSubmit(async (values) => {
           console.log(values);
-          sendRequest(values);
+          await sendRequest(values);
         })}
       >
         <Switch
@@ -134,6 +161,7 @@ export default function RatingForm() {
           Comment
         </Text>
         <Textarea
+          mb="md"
           id="description"
           styles={{ input: { padding: "6px 10px" } }}
           autosize
@@ -143,8 +171,26 @@ export default function RatingForm() {
           {...form.getInputProps("description")}
         />
 
+        <Turnstile
+          sitekey="0x4AAAAAABvJEAhgyrPR-OIH"
+          theme={colorScheme}
+          size="normal"
+          refreshExpired="auto"
+          onSuccess={onSuccess}
+          onError={onError}
+          onExpire={onExpire}
+        />
+
+        {form.errors.token && (
+          <Text c="red" size="xs" mt={5}>
+            {form.errors.token}
+          </Text>
+        )}
+
         <Group justify="flex-end" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button disabled={buttonDisabled} type="submit">
+            Submit
+          </Button>
         </Group>
       </form>
     </Container>
