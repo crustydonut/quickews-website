@@ -66,14 +66,15 @@ export default function RatingForm() {
   };
 
   async function sendRequest(values) {
-    const response = await fetch(
-      "https://quickews.canny0.workers.dev/api/v1/ratings",
-      {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    // eslint-disable-next-line no-undef
+    const url = new URL(__API_URL__);
+    url.pathname = "/v1/ratings";
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: { "Content-Type": "application/json" },
+    });
 
     if (response.status === 204) {
       window.location.replace("/");
