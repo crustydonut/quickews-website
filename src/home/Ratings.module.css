@@ -1,0 +1,23 @@
+.ratings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* justify-content: space-between; */
+  /* flex-wrap: nowrap; */
+  align-items: stretch;
+  margin: var(--mantine-spacing-lg) 0;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    align-items: center;
+    grid-template-columns: repeat(1, 1fr);
+
+    /* padding: 0 var(--mantine-spacing-lg); */
+  }
+}
+
+.paper {
+  /* max-width: 400px; */
+  /* margin-right: auto;
+  margin-left: auto; */
+  /* width: 100%; */
+  padding: var(--mantine-spacing-xl);
+}

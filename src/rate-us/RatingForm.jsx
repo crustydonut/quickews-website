@@ -70,11 +70,16 @@ export default function RatingForm() {
     const url = new URL(__API_URL__);
     url.pathname = "/v1/ratings";
 
+    console.log(url);
+    
+
     const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
     });
+
+    console.log(await response.json(), response.status);
 
     if (response.status === 204) {
       window.location.replace("/");
@@ -109,7 +114,7 @@ export default function RatingForm() {
         style={{ maxWidth: "400px", margin: "0 auto" }}
         onSubmit={form.onSubmit(async (values) => {
           console.log(values);
-          await sendRequest(values);
+          sendRequest(values);
         })}
       >
         <Switch

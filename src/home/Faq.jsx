@@ -1,5 +1,11 @@
 import { FaPlus } from "react-icons/fa6";
-import { Accordion, Container, ThemeIcon, Title, useComputedColorScheme } from "@mantine/core";
+import {
+  Accordion,
+  Container,
+  ThemeIcon,
+  Title,
+  useComputedColorScheme,
+} from "@mantine/core";
 import classes from "./Faq.module.css";
 
 const data = [
@@ -35,12 +41,15 @@ const data = [
 ];
 
 export default function Faq() {
-  const colorScheme = useComputedColorScheme(undefined, { getInitialValueInEffect: true } )
+  const colorScheme = useComputedColorScheme(undefined, {
+    getInitialValueInEffect: true,
+  });
   return (
     <div className={classes.wrapper}>
       <Container size="sm">
+        <Title order={1} c={colorScheme === "light" ? "dark.7" : "gray.1"} size="3rem" mb="xl" fw={500} ta="center">Frequently Asked Questions</Title>
         <Accordion
-          classNames={{content: classes.content, item: classes.item}}
+          classNames={{ content: classes.content, item: classes.item }}
           order={3}
           variant="separated"
           chevron={
@@ -50,13 +59,14 @@ export default function Faq() {
           }
         >
           {data.map((obj, i) => (
-            <Accordion.Item bdrs="md" bd={`2px solid ${colorScheme === "light" ? "gray.3" : "dark.4"}`} key={i} value={obj.control}>
-              <Accordion.Control>
-                {obj.control}
-              </Accordion.Control>
-              <Accordion.Panel>
-                {obj.panel}
-              </Accordion.Panel>
+            <Accordion.Item
+              bdrs="md"
+              bd={`2px solid ${colorScheme === "light" ? "gray.3" : "dark.4"}`}
+              key={i}
+              value={obj.control}
+            >
+              <Accordion.Control>{obj.control}</Accordion.Control>
+              <Accordion.Panel>{obj.panel}</Accordion.Panel>
             </Accordion.Item>
           ))}
         </Accordion>

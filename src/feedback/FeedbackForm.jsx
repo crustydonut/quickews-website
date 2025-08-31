@@ -65,13 +65,15 @@ export default function FeedbackForm() {
   async function sendRequest(values) {
     // eslint-disable-next-line no-undef
     const url = new URL(__API_URL__);
-    url.pathname = "/v1/ratings";
+    url.pathname = "/v1/feedback";
 
     const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
     });
+
+    console.log(response.status);
 
     if (response.status === 204) {
       window.location.replace("/");

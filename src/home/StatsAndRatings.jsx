@@ -13,11 +13,12 @@ import { FaGlobe, FaMagnifyingGlass, FaUsers } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import classes from "./StatsAndRatings.module.css";
 import { useInView } from "react-intersection-observer";
+import Ratings from "./Ratings";
 
 const stats = [
   {
-    label: "Monthly active users",
-    pathname: "/v1/mau",
+    label: "Installs",
+    pathname: "/v1/installs",
     icon: FaUsers,
   },
   {
@@ -32,43 +33,43 @@ const stats = [
   },
 ];
 
-function Stat({ label, pathname, icon }) {
-  const [stat, setStat] = useState("");
-
-  const Icon = icon;
-  const url = new URL(__API_URL__);
-  url.pathname = pathname;
-
-  useEffect(() => {
-    (async function () {
-      const response = await fetch(url);
-      const json = await response.json();
-      setStat(json.count);
-    })();
-  });
-
-  return (
-    <Paper className={classes.stat}>
-      <ThemeIcon
-        bd="2px solid"
-        size={"lg"}
-        radius="md"
-        variant="outline"
-        color="grape.0"
-      >
-        <Icon />
-      </ThemeIcon>
-      <Text size="3rem" fw={600}>
-        {stat}
-      </Text>
-      <Badge color="gray.0" c={"grape.8"} tt="uppercase" size="lg" fw={300}>
-        {label}
-      </Badge>
-    </Paper>
-  );
-}
-
 function Stats() {
+  function Stat({ label, pathname, icon }) {
+    const [stat, setStat] = useState("");
+    const Icon = icon;
+
+    useEffect(() => {
+      (async function () {
+        const url = new URL(__API_URL__);
+        url.pathname = pathname;
+
+        const response = await fetch(url);
+        const json = await response.json();
+        setStat(json.count);
+      })();
+    });
+
+    return (
+      <Paper className={classes.stat}>
+        <ThemeIcon
+          bd="2px solid"
+          size={"lg"}
+          radius="md"
+          variant="outline"
+          color="grape.0"
+        >
+          <Icon />
+        </ThemeIcon>
+        <Text size="3rem" fw={600}>
+          {stat}
+        </Text>
+        <Badge color="gray.0" c={"grape.8"} tt="uppercase" size="lg" fw={300}>
+          {label}
+        </Badge>
+      </Paper>
+    );
+  }
+
   return (
     <Paper bdrs="lg" withBorder className={classes.stats}>
       {stats.map((stat, idx) => (
@@ -78,37 +79,19 @@ function Stats() {
   );
 }
 
-function Ratings() {
-  const [ratings, setRatings] = useState([]);
-
-  useEffect(() => {
-    (async function () {
-      const response = await fetch("");
-      const json = await response.json();
-      setRatings(json);
-    })();
-  });
-
-  function Rating() {}
-
-  return (
-    <>
-      {ratings.map((rating, idx) => (
-        <Rating key={idx} {...rating} />
-      ))}
-    </>
-  );
-}
-
-function RatingsBlock() {
+function RatingsBox() {
   const [stars, setStars] = useState(0);
 
   useEffect(() => {
     (async function () {
-      // const response = await fetch("");
-      // const json = await response.json();
-      // setStars(json.stars.toPrecision(2));
-      setStars(4.45);
+      const url = new URL(__API_URL__);
+      url.pathname = "/v1/ratings/avg";
+
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+      
+      setStars(data.avg);
     })();
   });
 
@@ -119,10 +102,10 @@ function RatingsBlock() {
       </Title>
       <Stack align="center" m={"xl"}>
         <Text className={classes.rating} ff="monospace" component="span">
-          {stars.toPrecision(2)}/5
+          {stars}/5
         </Text>
         <Rating size="xl" fractions={24} value={stars} inert />
-        <Ratings />
+        {/* <Ratings /> */}
       </Stack>
     </>
   );
@@ -130,7 +113,7 @@ function RatingsBlock() {
 
 export default function StatsAndRatings() {
   const { ref, inView } = useInView({
-    threshold: 0.6,
+    threshold: 0,
     triggerOnce: true,
   });
 
@@ -139,9 +122,11 @@ export default function StatsAndRatings() {
       {inView ? (
         <Container className={classes.container}>
           <Stats />
-          <RatingsBlock />
+          <RatingsBox />
+          <Ratings />
         </Container>
-      ) : (<></>
+      ) : (
+        <></>
       )}
     </section>
   );
