@@ -79,8 +79,6 @@ export default function RatingForm() {
       headers: { "Content-Type": "application/json" },
     });
 
-    console.log(await response.json(), response.status);
-
     if (response.status === 204) {
       window.location.replace("/");
     } else {
