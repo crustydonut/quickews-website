@@ -41,6 +41,7 @@ export default function Header() {
           <ActionIcon
             component="a"
             variant="default"
+            target="_blank"
             size="lg"
             radius="md"
             ml="xs"

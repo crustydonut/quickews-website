@@ -54,20 +54,11 @@ export default function Footer() {
               size="lg"
               bg="#1f2328"
               variant="default"
+              target="_blank"
               href="https://github.com/canny0/quickews-chrome-extension"
             >
               <FaGithub size={20} fill="#f0f6fc" />
             </ActionIcon>
-            {/* <Group className={classes.social} gap={4}>
-            <ActionIcon component="a" size="lg" bg="#FF4500" variant="outline">
-              <FaReddit size={20} fill="white" />
-            </ActionIcon>
-            <ActionIcon component="a" size="lg" bg="#1f2328" variant="outline">
-              <FaGithub size={20} fill="#f0f6fc" />
-            </ActionIcon> */}
-            {/* <ActionIcon component="a" size="lg" bg="#4285f4" variant="outline">
-              <FaEnvelope size={20} color="white" />
-            </ActionIcon> */}
           </Group>
         </Group>
       </Container>
