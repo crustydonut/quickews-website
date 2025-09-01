@@ -7,7 +7,7 @@ const productLinks = [
 const aboutLinks = [
   { link: "/rate-us/", label: "Rate us" },
   { link: "/feedback/", label: "Feedback" },
-  { link: "/purpose/", label: "Purpose" },
+  // { link: "/purpose/", label: "Purpose" },
   { link: "/privacy-policy/", label: "Privacy policy" },
   // { link: "mailto:example@gmail.com", label: "Contact Email"}
 ];

@@ -45,7 +45,7 @@ export default function Header() {
             radius="md"
             ml="xs"
             bg="#1f2328"
-            href="https://github.com/canny0/quickews"
+            href="https://github.com/canny0/quickews-chrome-extension"
           >
             <FaGithub size={20} fill="#f0f6fc" />
           </ActionIcon>

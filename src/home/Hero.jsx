@@ -73,10 +73,18 @@ export default function Hero() {
         </List>
 
         <Group pr="md" pl="md" mt={30}>
-          <Button radius="xl" size="md" className={classes.control}>
+          <Button
+            component="a"
+            href="/features/"
+            radius="xl"
+            size="md"
+            className={classes.control}
+          >
             Discover
           </Button>
           <Button
+            component="a"
+            href="/installation/"
             variant="default"
             radius="xl"
             size="md"
@@ -85,23 +93,6 @@ export default function Hero() {
             Installation
           </Button>
         </Group>
-
-        {/* <Group className={classes.controls}>
-          <Button size="xl" className={classes.control} variant="gradient">
-            Get started
-          </Button>
-
-          <Button
-            component="a"
-            href="https://github.com/mantinedev/mantine"
-            size="xl"
-            variant="default"
-            className={classes.control}
-            leftSection={<FaGithub size={20} />}
-          >
-            GitHub
-          </Button>
-        </Group> */}
       </Container>
     </div>
   );
