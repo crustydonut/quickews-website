@@ -10,33 +10,39 @@ import classes from "./Faq.module.css";
 
 const data = [
   {
-    control: "Is QuickEWS free?",
-    panel: "hello world",
+    control: "Is the extension free?",
+    panel:
+      "Yes! QuickEWS is completely free to use, distribute, and modify for non-commercial purposes under the CC BY-NC-SA 4.0 license.",
   },
   {
-    control: "will it slow down my computer?",
-    panel: "hello world",
+    control: "Will it slow down my computer?",
+    panel:
+      "No. QuickEWS was designed to be lightweight and efficient, so it works smoothly even on older computers.",
   },
   {
-    control: "Is the QuickEWS extension safe?",
-    panel: "hello world",
+    control: "Is the extension safe?",
+    panel:
+      "Yes. All the code is publicly available on GitHub (link in the header). You can review it yourself or even ask ChatGPT to explain what it does.",
   },
   {
-    control: "does it work in other browsers",
-    panel: "hello world",
+    control: "Does it work in other browsers?",
+    panel:
+      "Yes, QuickEWS works on most browsers except Firefox and its derivatives.",
   },
   {
-    control:
-      "does it work on all pastpaper site / why is the extension not working?",
-    panel: "hello world",
+    control: "Why is the extension not working?",
+    panel:
+      "QuickEWS works on websites that follow a specific PDF naming format. If it doesn’t work on a website, you can submit a feature request via the feedback form in the footer.",
   },
   {
-    control: "howt to give feeback or request a feature?",
-    panel: "hello world",
+    control: "How do I submit a feature request or bug report?",
+    panel:
+      "Use the feedback form in the footer to submit requests or report bugs. You can also leave a rating to support us if you’d like!",
   },
   {
-    control: "what does the creator gain from making it free",
-    panel: "hello world",
+    control: "What do you gain from making it free?",
+    panel:
+      "Creating QuickEWS is a great learning opportunity for me, and I can showcase it on my resume or college applications. It’s also rewarding to see your hard work pay off!",
   },
 ];
 
@@ -47,7 +53,16 @@ export default function Faq() {
   return (
     <div className={classes.wrapper}>
       <Container size="sm">
-        <Title order={1} c={colorScheme === "light" ? "dark.7" : "gray.1"} size="3rem" mb="xl" fw={500} ta="center">Frequently Asked Questions</Title>
+        <Title
+          order={1}
+          c={colorScheme === "light" ? "dark.7" : "gray.1"}
+          size="3rem"
+          mb="xl"
+          fw={500}
+          ta="center"
+        >
+          Frequently Asked Questions
+        </Title>
         <Accordion
           classNames={{ content: classes.content, item: classes.item }}
           order={3}
@@ -74,64 +89,3 @@ export default function Faq() {
     </div>
   );
 }
-
-// {
-//   return (
-//     <div className={classes.wrapper}>
-//       <Container size="sm">
-//         <Title ta="center" className={classes.title}>
-//           Frequently Asked Questions
-//         </Title>
-
-//         <Accordion
-//           // chevronPosition="right"
-//           // defaultValue="reset-password"
-//           variant="separated"
-//           styles={{
-//             label: { color: "var(--mantine-color-black)" },
-//             item: { border: 0 },
-//           }}
-//           chevron={
-//             <ThemeIcon variant="default" radius="xl">
-//               <FaPlus size={18} stroke={1.5} />
-//             </ThemeIcon>
-//           }
-//           classNames={{ chevron: classes.chevron }}
-//         >
-//           <Accordion.Item className={classes.item} value="reset-password">
-//             <Accordion.Control>How can I reset my password?</Accordion.Control>
-//             <Accordion.Panel>{placeholder}</Accordion.Panel>
-//           </Accordion.Item>
-
-//           <Accordion.Item className={classes.item} value="another-account">
-//             <Accordion.Control>
-//               Can I create more that one account?
-//             </Accordion.Control>
-//             <Accordion.Panel>{placeholder}</Accordion.Panel>
-//           </Accordion.Item>
-
-//           <Accordion.Item className={classes.item} value="newsletter">
-//             <Accordion.Control>
-//               How can I subscribe to monthly newsletter?
-//             </Accordion.Control>
-//             <Accordion.Panel>{placeholder}</Accordion.Panel>
-//           </Accordion.Item>
-
-//           <Accordion.Item className={classes.item} value="credit-card">
-//             <Accordion.Control>
-//               Do you store credit card information securely?
-//             </Accordion.Control>
-//             <Accordion.Panel>{placeholder}</Accordion.Panel>
-//           </Accordion.Item>
-
-//           <Accordion.Item className={classes.item} value="payment">
-//             <Accordion.Control>
-//               What payment systems to you work with?
-//             </Accordion.Control>
-//             <Accordion.Panel>{placeholder}</Accordion.Panel>
-//           </Accordion.Item>
-//         </Accordion>
-//       </Container>
-//     </div>
-//   );
-// }
