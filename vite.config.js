@@ -13,17 +13,17 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: resolve(__dirname, "src", "index.html"),
-        // features: resolve(__dirname, "src", "features", "index.html"),
-        // installation: resolve(__dirname, "src", "installation", "index.html"),
+        features: resolve(__dirname, "src", "features", "index.html"),
+        installation: resolve(__dirname, "src", "installation", "index.html"),
         rateUs: resolve(__dirname, "src", "rate-us", "index.html"),
         feedback: resolve(__dirname, "src", "feedback", "index.html"),
         // purpose: resolve(__dirname, "src", "purpose", "index.html"),
-        // privacyPolicy: resolve(
-        //   __dirname,
-        //   "src",
-        //   "privacy-policy",
-        //   "index.html"
-        // ),
+        privacyPolicy: resolve(
+          __dirname,
+          "src",
+          "privacy-policy",
+          "index.html"
+        ),
       },
     },
     outDir: resolve(__dirname, "dist"),

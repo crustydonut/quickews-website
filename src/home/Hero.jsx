@@ -1,5 +1,6 @@
 import Demo from "../assets/quickews/quickews-demo-compressed.mp4";
 import {
+  Anchor,
   Box,
   Button,
   Container,
@@ -32,11 +33,18 @@ export default function Hero() {
         <Box color="gray" className={classes.video}>
           <video src={Demo} autoPlay muted loop></video>
         </Box>
-
-        {/* <Text className={classes.description} c="gray">
-          Build fully functional accessible web applications with ease – Mantine includes more than
-          100 customizable components and hooks to cover you in any situation
-        </Text> */}
+        <Anchor
+          c="gray"
+          ta="center"
+          w="100%"
+          display="block"
+          size="xs"
+          mb="md"
+          href="https://www.flaticon.com/free-icons/cursor"
+          title="cursor icons"
+        >
+          Cursor icons created by Freepik - Flaticon
+        </Anchor>
 
         <List
           pl="md"
@@ -49,23 +57,6 @@ export default function Hero() {
             </ThemeIcon>
           }
         >
-          {/* <List.Item>
-            <b>TypeScript based</b> – build type safe applications, all
-            components and hooks export types
-          </List.Item>
-          <List.Item>
-            <b>Free and open source</b> – all packages have MIT license, you can
-            use Mantine in any project
-          </List.Item>
-          <List.Item>
-            <b>No annoying focus ring</b> – focus ring will appear only when
-            user navigates with keyboard
-          </List.Item> */}
-          <List.Item>
-            <b>History you control</b> – save the searches you want to revisit
-            safely on your own device; we store no personal data.{" "}
-            <a href="/privacy">Read our privacy policy</a>.
-          </List.Item>
           <List.Item>
             <b>Instant access</b> – all relevant walkthroughs are available with
             a single click.
@@ -74,11 +65,16 @@ export default function Hero() {
             <b>Made for students, by students</b> – built with real student
             needs in mind, to make learning faster and easier.
           </List.Item>
+          <List.Item>
+            <b>History you control</b> – save the searches you want to revisit
+            safely on your own device; we store no personal data.{" "}
+            <a href="/privacy-policy/">Read our privacy policy</a>.
+          </List.Item>
         </List>
 
         <Group pr="md" pl="md" mt={30}>
           <Button radius="xl" size="md" className={classes.control}>
-            Installation
+            Discover
           </Button>
           <Button
             variant="default"
@@ -86,7 +82,7 @@ export default function Hero() {
             size="md"
             className={classes.control}
           >
-            Learn more
+            Installation
           </Button>
         </Group>
 

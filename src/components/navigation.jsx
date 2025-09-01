@@ -1,7 +1,7 @@
 const productLinks = [
   { link: "/", label: "Home" },
-  { link: "/features", label: "Features" },
-  { link: "/installation", label: "Installation" },
+  { link: "/features/", label: "Features" },
+  { link: "/installation/", label: "Installation" },
 ];
 
 const aboutLinks = [
