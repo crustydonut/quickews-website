@@ -99,12 +99,11 @@ function RatingsBox() {
       <Title className={classes.title} order={2}>
         Real feedback from our users
       </Title>
-      <Stack align="center" m={"xl"}>
+      <Stack justify="center" align="center" m={"xl"}>
         <Text className={classes.rating} ff="monospace" component="span">
-          {stars}/5
+          {stars}{stars !== "No ratings yet" && "/5"}
         </Text>
         <Rating size="xl" fractions={24} value={stars} inert />
-        {/* <Ratings /> */}
       </Stack>
     </>
   );

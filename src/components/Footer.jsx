@@ -2,7 +2,7 @@ import { ActionIcon, Container, Group, Text } from "@mantine/core";
 import classes from "./Footer.module.css";
 import Logo from "./Logo";
 import { footerLinks as links } from "./navigation";
-import { FaEnvelope, FaGithub, FaReddit } from "react-icons/fa6";
+import { FaGithub, FaReddit } from "react-icons/fa6";
 
 export default function Footer() {
   const groups = links.map((group, idx) => {
@@ -45,6 +45,8 @@ export default function Footer() {
               size="lg"
               bg="#FF4500"
               variant="default"
+              target="_blank"
+              href="https://www.reddit.com/user/QuickEWS/"
             >
               <FaReddit size={20} fill="white" />
             </ActionIcon>

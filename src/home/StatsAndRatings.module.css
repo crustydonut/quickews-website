@@ -73,6 +73,7 @@
 
 .rating {
   font-size: 4rem;
+  text-align: center;
 
   @media (max-width: $mantine-breakpoint-sm) {
     font-size: 3rem;
